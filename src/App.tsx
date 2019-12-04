@@ -1,24 +1,18 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Script from 'react-load-script';
 
 const App: React.FC = () => {
+  const container:any = useRef();
+  const handleScriptLoad = () =>{
+    Autodesk.Viewing.Initializer({env: 'Local'}, ()=>new Autodesk.Viewing.GuiViewer3D(container.current).start('https://dukedhx.github.io/Forge-Workshop/shaver/0.svf'))
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div ref={container}>
+      </div>
+      <Script url='https://developer.api.autodesk.com/modelderivative/v2/viewers/viewer3D.min.js?v=v7.*' onLoad={handleScriptLoad}></Script>
     </div>
   );
 }

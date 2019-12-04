@@ -1,5 +1,5 @@
 {
-  "name": "my-app2",
+  "name": "viewer-react-typescript",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -32,5 +32,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/forge-viewer": "^7.4.0",
+    "react-load-script": "0.0.6"
   }
 }
