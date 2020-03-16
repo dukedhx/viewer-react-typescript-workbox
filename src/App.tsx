@@ -51,7 +51,10 @@ const App: React.FC = () => {
       setLoadViewerLibrary(true);
       loadStyleSheet(viewerStylesheetURL);
     }
-    loadServiceWorker()
+    loadServiceWorker();
+    return ()=> {
+       if (window.NOP_VIEWER) window.NOP_VIEWER.finish() //terminate Viewer when unmounting
+    }
   });
 
   return (
